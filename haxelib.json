@@ -1,0 +1,13 @@
+{
+  "name": "hxmw",
+  "url": "https://github.com/Aurel300/hxmw",
+  "license": "MIT",
+  "tags": [
+  ],
+  "description": "",
+  "version": "0.0.1",
+  "classPath": "src/",
+  "contributors": [
+    "Aurel300"
+  ]
+}
