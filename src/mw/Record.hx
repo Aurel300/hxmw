@@ -33,7 +33,7 @@ class Record {
     return ret;
   }
 
-  public function readFields():Iterator<{name:String, inp:Input}> {
+  public function readFields():Iterator<{name:String, inp:Input, length:Int}> {
     var inp = new haxe.io.BytesInput(data);
     var done = false;
     var nextName = try inp.readString(4) catch (e:Dynamic) { done = true; null; };
@@ -41,9 +41,10 @@ class Record {
       hasNext: () -> !done,
       next: () -> {
         var length = inp.readInt32();
-        var ret:{name:String, inp:Input} = {
+        var ret:{name:String, inp:Input, length:Int} = {
           name: nextName,
           inp: new haxe.io.BytesInput(inp.read(length)),
+          length: length,
         };
         nextName = try inp.readString(4) catch (e:Dynamic) { done = true; null; };
         ret;
