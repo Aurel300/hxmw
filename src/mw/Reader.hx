@@ -2,6 +2,7 @@ package mw;
 
 import haxe.io.Bytes;
 import haxe.io.Input;
+import mw.rec.*;
 
 class Reader {
   public static function read(inp:Input):Plugin {
@@ -23,10 +24,49 @@ class Reader {
     return [ for (record in plugin) {
       record: record,
       kind: (switch (record.type) {
-        case "CLOT": Clothing(mw.rec.Clothing.read(record));
-        case "TES3": Header(mw.rec.Header.read(record));
-        case "LEVI": LeveledItem(mw.rec.LeveledItem.read(record));
-        case "SPEL": Spell(mw.rec.Spell.read(record));
+        case "ACTI": Activator(Activator.read(record));
+        case "ALCH": Potion(Potion.read(record));
+        case "APPA": AlchemyApparatus(AlchemyApparatus.read(record));
+        case "ARMO": Armour(Armour.read(record));
+        case "BODY": BodyParts(BodyParts.read(record));
+        case "BOOK": Book(Book.read(record));
+        case "BSGN": Birthsign(Birthsign.read(record));
+        // case "CELL":
+        case "CLAS": CharacterClass(CharacterClass.read(record));
+        case "CLOT": Clothing(Clothing.read(record));
+        case "CONT": Container(Container.read(record));
+        // case "CREA":
+        // case "DIAL":
+        case "DOOR": Door(Door.read(record));
+        case "ENCH": Enchantment(Enchantment.read(record));
+        case "FACT": Faction(Faction.read(record));
+        case "GLOB": Global(Global.read(record));
+        case "GMST": GameSetting(GameSetting.read(record));
+        // case "INFO":
+        case "INGR": Ingredient(Ingredient.read(record));
+        case "LAND": Land(Land.read(record));
+        case "LEVC": LeveledCreature(LeveledCreature.read(record));
+        case "LEVI": LeveledItem(LeveledItem.read(record));
+        case "LIGH": Light(Light.read(record));
+        case "LOCK": LockpickingItems(LockpickingItems.read(record));
+        case "LTEX": LandTexture(LandTexture.read(record));
+        case "MGEF": MagicEffect(MagicEffect.read(record));
+        case "MISC": MiscItem(MiscItem.read(record));
+        // case "NPC_":
+        // case "PGRD":
+        case "PROB": ProbeItems(ProbeItems.read(record));
+        // case "RACE": Race(Race.read(record));
+        case "REGN": Region(Region.read(record));
+        case "REPA": RepairItems(RepairItems.read(record));
+        // case "SCPT":
+        // case "SKIL":
+        case "SNDG": SoundGenerator(SoundGenerator.read(record));
+        case "SOUN": Sound(Sound.read(record));
+        case "SPEL": Spell(Spell.read(record));
+        case "SSCR": StartScript(StartScript.read(record));
+        case "STAT": Static(Static.read(record));
+        case "TES3": Header(Header.read(record));
+        // case "WEAP":
         case _: Unknown;
       }),
     } ];

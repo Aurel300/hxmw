@@ -1,11 +1,11 @@
 package mw.rec;
 
-class Spell extends Parsable {
+class Enchantment extends Parsable {
   var name:ZString;
-  var fnam:Optional<ZString>;
-  var spdt:{
+  var endt:{
     type:UInt32,
-    spellCost:UInt32,
+    enchantmentCost:UInt32,
+    charge:UInt32,
     flags:UInt32,
   };
   var enchantments:Group<{
